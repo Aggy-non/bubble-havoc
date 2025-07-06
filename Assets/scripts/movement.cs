@@ -6,17 +6,19 @@ public class movement : MonoBehaviour
     public float speed;
     public float jumpForce;
     public Rigidbody2D rb;
-    private bool isGrounded;
     float horizontalMovement;
+    public Vector2 boxSize;
+    public float groundCheckSize;
+    public LayerMask groundLayer;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         rb.linearVelocity= new Vector2(horizontalMovement*speed, rb.linearVelocity.y); 
@@ -30,7 +32,7 @@ public class movement : MonoBehaviour
 
     public void jump(InputAction.CallbackContext context) 
     {
-        if(context.performed)
+        if(context.performed && isGrounded())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
         }
@@ -40,4 +42,23 @@ public class movement : MonoBehaviour
         }
     
     }
+
+    public bool isGrounded()
+    {
+        if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, groundCheckSize, groundLayer))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position - transform.up * groundCheckSize, boxSize);
+    }
+
 }
+
