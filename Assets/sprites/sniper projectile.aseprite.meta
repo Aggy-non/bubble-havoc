@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2dcaa8b021bbe2d4bb7b7af857411d35
+guid: 21c50a86e1d797e48a550ec53e91df3e
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -76,7 +76,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -91,7 +91,7 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638909636787214924
+  platformSettingsDirtyTick: 638909636455036787
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: ramalingam
+  - name: sniper projectile
     originalName: 
-    pivot: {x: 0.5, y: -0.09090909}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 14
-      height: 11
-    spriteID: dcb3f3a28a2a70e46bd8e6ca19dfd85f
+      width: 6
+      height: 4
+    spriteID: 018b337ef3d4d0f4394ee219b2b88b11
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 2900527959
+      value0: 4102821252
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: ramalingam
+    name: sniper projectile
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: ramalingam
+    - name: sniper projectile
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 1
-        y: 1
-        width: 14
-        height: 11
-      spriteId: dcb3f3a28a2a70e46bd8e6ca19dfd85f
+        y: 2
+        width: 6
+        height: 4
+      spriteId: 018b337ef3d4d0f4394ee219b2b88b11
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -214,8 +214,8 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
-  generatePhysicsShape: 0
+  generatePhysicsShape: 1
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 16, y: 16}
-  previousTextureSize: {x: 32, y: 32}
+  canvasSize: {x: 8, y: 8}
+  previousTextureSize: {x: 16, y: 16}
