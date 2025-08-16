@@ -6,6 +6,7 @@ public class movement : MonoBehaviour
 {
     [Header("Player")]
     public Rigidbody2D rb;
+    bool isFacingRight = true;
 
     [Header("Movement")]
     public float speed;
@@ -43,6 +44,7 @@ public class movement : MonoBehaviour
         Movement(horizontalMovement);
         isGrounded();
         Gravity();
+        flip();
         //AirControl();
     }
 
@@ -92,13 +94,22 @@ public class movement : MonoBehaviour
             }
             else if (context.canceled && rb.linearVelocityY > 0)
             {
-                rb.linearVelocityY = rb.linearVelocityY * 0.5f;
+                rb.linearVelocityY = rb.linearVelocityY * 0.7f;
                 //JumpRemaining--;
             }
 
         }
     }
-
+    public void flip()
+    {
+        if(isFacingRight && horizontalMovement<0 || !isFacingRight &&  horizontalMovement > 0)
+        {
+            isFacingRight = !isFacingRight;
+            Vector2 ls = transform.localScale;
+            ls.x *= -1f;
+            transform.localScale = ls;
+        }
+    }
     public void isGrounded()
     {
         if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, groundCheckSize, groundLayer))
