@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2dcaa8b021bbe2d4bb7b7af857411d35
+guid: 140c732f879428141a5014b33a970c85
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -75,8 +75,8 @@ ScriptedImporter:
     fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 1
-    defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotSpace: 1
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -90,8 +90,8 @@ ScriptedImporter:
     fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 1
-    defaultPivotSpace: 0
-    defaultPivotAlignment: 7
+    defaultPivotSpace: 1
+    defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
     spritePadding: 0
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638911433014666029
+  platformSettingsDirtyTick: 638911433677961278
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,10 +127,10 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: ramalingam
+  - name: rajagopal
     originalName: 
-    pivot: {x: 0.5, y: -0.09090909}
-    alignment: 9
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 14
       height: 11
-    spriteID: dcb3f3a28a2a70e46bd8e6ca19dfd85f
+    spriteID: 565cfdaa84cf4ed4389bb234a02fbf90
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,17 +153,17 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 2900527959
+      value0: 2989614813
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: ramalingam
+    name: rajagopal
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: ramalingam
+    - name: rajagopal
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -171,7 +171,7 @@ ScriptedImporter:
         y: 1
         width: 14
         height: 11
-      spriteId: dcb3f3a28a2a70e46bd8e6ca19dfd85f
+      spriteId: 565cfdaa84cf4ed4389bb234a02fbf90
     linkedCells: []
     tileCells: []
     tileSetIndex: 0

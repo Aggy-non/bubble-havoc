@@ -5,8 +5,11 @@ using UnityEngine.Rendering;
 public class PlayerShoot : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public float bulletSpeed;
+    public int bulletSpeed;
     public float bulletDistance;
+    public int bulletCount;
+    
+    public bool bulletHack;
 
 
     void Update()
@@ -15,10 +18,13 @@ public class PlayerShoot : MonoBehaviour
         {
             Shoot();
         }
+        
     }
 
     void Shoot()
     {
+        if(bulletCount>0)
+        {
         Vector3 mousePosition3D = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 mousePosition2D = new Vector2(mousePosition3D.x, mousePosition3D.y);
         Vector2 shootDirection = (mousePosition2D - (Vector2)transform.position).normalized;
@@ -27,5 +33,9 @@ public class PlayerShoot : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, transform.position, rotation);
         bullet.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(shootDirection.x, shootDirection.y) * bulletSpeed;
         Destroy(bullet, bulletDistance);
+            if(!bulletHack)
+            { bulletCount--; }
+        }
     }
+
 }
