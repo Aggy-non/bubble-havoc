@@ -7,7 +7,7 @@ public class PlayerShoot : MonoBehaviour
     public GameObject bulletPrefab;
     public int bulletSpeed;
     public float bulletDistance;
-    public int bulletCount;
+    public int AirLevel;
     
     public bool bulletHack;
 
@@ -23,7 +23,7 @@ public class PlayerShoot : MonoBehaviour
 
     void Shoot()
     {
-        if(bulletCount>0)
+        if(AirLevel>0)
         {
         Vector3 mousePosition3D = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 mousePosition2D = new Vector2(mousePosition3D.x, mousePosition3D.y);
@@ -34,7 +34,7 @@ public class PlayerShoot : MonoBehaviour
         bullet.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(shootDirection.x, shootDirection.y) * bulletSpeed;
         Destroy(bullet, bulletDistance);
             if(!bulletHack)
-            { bulletCount--; }
+            { AirLevel--; }
         }
     }
 

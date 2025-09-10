@@ -13,6 +13,12 @@ public class Bullet : MonoBehaviour
             enemy.ModifyAir(AirValue);
             Destroy(gameObject);
         }
+
+        else if (!col.CompareTag("Player"))
+        {
+            // Hit something that's NOT the player ? pop
+            Destroy(gameObject);
+        }
     }
 
 }

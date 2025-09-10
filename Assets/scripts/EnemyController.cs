@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour
     {
         if (bubbleLevel>maxAir || bubbleLevel<=minAir)
         {
-            Debug.Log(gameObject.name + " popped!");
+            //Debug.Log(gameObject.name + " popped!");
             Destroy(gameObject);
         }
     }
@@ -28,7 +28,7 @@ public class EnemyController : MonoBehaviour
     public void ModifyAir(int amount)
     {
         bubbleLevel += amount; // here "amount" comes from the parameter
-        Debug.Log(gameObject.name + " air changed by " + amount + ". Current: " + bubbleLevel);
+        //Debug.Log(gameObject.name + " air changed by " + amount + ". Current: " + bubbleLevel);
     }
 
 }
