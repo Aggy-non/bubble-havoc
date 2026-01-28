@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+﻿using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,20 +12,39 @@ public class LilGuy : MonoBehaviour
     private float FacingDirection;
     public Rigidbody2D rb;
     private Vector2 direction;
-    public int sprintMultiplier;
-    private float sprintSpeed;
     private float ogSpeed;
+    float currentSpeed;
+    
 
     [Header("UI")]
     [SerializeField] Text scoreText;
-    private int scoreValue;
+    public int scoreValue;   
+    public Slider StaminaBar;
+
+    [Header("Stamina")]
+    public float stamina;
+    private float minStamina = 0f;
+    public float maxStamina;
+    public float staminaRegenSpeed;
+    public float StaminaDrainSpeed;
+    private float regenDelayTimer;
+    public float regenDelay;
+
+
+    [Header("sprint")]
+    public float sprintMultiplier;
+    private float sprintSpeed;
+    bool canSprint;
+    bool sprintPressed;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //rb = GameObject.GetComponent<Rigidbody2D>();
+        //Rigidbody2D rb = GameObject.GetComponent<Rigidbody2D>();
         ogSpeed = speed;
+        stamina = maxStamina;
         sprintSpeed = speed * sprintMultiplier;
         
     }
@@ -33,9 +52,17 @@ public class LilGuy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction.x = Input.GetAxis("Horizontal");
-        direction.y = Input.GetAxis("Vertical");
+        GettingDirection();
+        StaminaDrainGain();
+        scoreText.text = scoreValue.ToString();
+        StaminaBar.value = stamina;
         //sprint();
+        if (Input.GetKey(KeyCode.E))
+        {
+            dribble();
+        }
+
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -49,29 +76,63 @@ public class LilGuy : MonoBehaviour
                 Vector2 kickDir = (collision.transform.position - transform.position).normalized;
 
                 ballrb.AddForce(kickDir * kickForce, ForceMode2D.Impulse);
-                scoreValue += 1;
-                scoreText.text=scoreValue.ToString();
+                //scoreValue += 1;
+                
             }
 
         }
     }
 
-    private void FixedUpdate() 
+    private void FixedUpdate()
     {
-        float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : ogSpeed;
-        rb.linearVelocity=direction.normalized*currentSpeed;
-       //direction = direction.normalized;
+        
+        canSprint = (stamina > minStamina);
+        sprintPressed = (Input.GetKey(KeyCode.LeftShift) || Input.GetAxis("Fire2") > 0.1f) && canSprint;
+        currentSpeed = sprintPressed ? sprintSpeed : ogSpeed;
+        rb.linearVelocity = direction.normalized * currentSpeed;
+        //direction = direction.normalized;
+        
+
+
+
+
     }
 
-    private void sprint()
+
+    public void dribble()
     {
-        if(Input.GetKey(KeyCode.LeftShift))
+
+    }
+
+    public void GettingDirection()
+    {
+        direction.x = Input.GetAxis("Horizontal");
+        direction.y = Input.GetAxis("Vertical");
+    }
+
+    public void StaminaDrainGain()
+    {
+        if (sprintPressed)
         {
-            speed = sprintSpeed;
+            stamina -= StaminaDrainSpeed * Time.deltaTime;
+            stamina = Mathf.Max(stamina, minStamina);
+            regenDelayTimer = regenDelay;
+
         }
-        else 
+        else
         {
-            speed = ogSpeed;
+            // count down timer
+            if (regenDelayTimer > 0f)
+            {
+                regenDelayTimer -= Time.deltaTime;
+            }
+            else
+            {
+                // only regen after delay has passed
+                stamina += staminaRegenSpeed * Time.deltaTime;
+                stamina = Mathf.Min(stamina, maxStamina);
+            }
         }
+
     }
 }
