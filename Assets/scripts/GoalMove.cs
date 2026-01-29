@@ -2,6 +2,7 @@
 
 public class GoalMove : MonoBehaviour
 {
+    public LilGuy player;
     public Transform pointA;
     public Transform pointB;
     public float speed;
@@ -15,12 +16,17 @@ public class GoalMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards
-            (transform.position,target.position,speed * Time.deltaTime);
+       
 
-        if(Vector3.Distance(transform.position, target.position) <0.1f)
+        if (player.scoreValue >= 2)
         {
-            target= (target==pointA) ? pointB : pointA;
+            transform.position = Vector3.MoveTowards
+           (transform.position, target.position, speed * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, target.position) < 0.1f)
+            {
+                target = (target == pointA) ? pointB : pointA;
+            }
         }
     }
 }
