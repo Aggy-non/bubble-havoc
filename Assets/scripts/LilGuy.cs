@@ -91,11 +91,6 @@ public class LilGuy : MonoBehaviour
         currentSpeed = sprintPressed ? sprintSpeed : ogSpeed;
         rb.linearVelocity = direction.normalized * currentSpeed;
         //direction = direction.normalized;
-        
-
-
-
-
     }
 
 
